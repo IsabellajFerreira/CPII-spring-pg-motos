@@ -30,6 +30,9 @@ public class VeiculoService {
                 .anoDeFabricacao( r.anoDeFabricacao() )
                 .cor( r.cor())
                 .preco( r.preco())
+                .cilindradas( r.cilindradas())
+                .modelo(r.modelo())
+                .palavraDeEfeito(r.palavraDeEfeito())
                 .tipoVeiculo( tipoVeiculo )
                 .build();
     }

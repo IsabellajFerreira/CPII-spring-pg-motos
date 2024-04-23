@@ -4,12 +4,13 @@ package br.com.fiap.motos.service;
 import br.com.fiap.motos.dto.request.AcessorioRequest;
 import br.com.fiap.motos.dto.response.AcessorioResponse;
 import br.com.fiap.motos.entity.Acessorio;
+import br.com.fiap.motos.entity.Loja;
 import br.com.fiap.motos.repository.AcessorioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 
 @Service
 public class AcessorioService  implements ServiceDTO<Acessorio, AcessorioRequest, AcessorioResponse>{
@@ -36,12 +37,12 @@ public class AcessorioService  implements ServiceDTO<Acessorio, AcessorioRequest
     }
 
     @Override
-    public List<Acessorio> findAll() {
+    public Collection<Loja> findAll() {
         return repo.findAll();
     }
 
     @Override
-    public List<Acessorio> findAll(Example<Acessorio> example) {
+    public Collection<Acessorio> findAll(Example<Acessorio> example) {
         return repo.findAll( example );
     }
 

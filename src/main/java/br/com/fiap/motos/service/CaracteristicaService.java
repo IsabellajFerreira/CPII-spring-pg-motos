@@ -3,6 +3,7 @@ package br.com.fiap.motos.service;
 import br.com.fiap.motos.dto.request.CaracteristicaRequest;
 import br.com.fiap.motos.dto.response.CaracteristicaResponse;
 import br.com.fiap.motos.entity.Caracteristica;
+import br.com.fiap.motos.entity.Fabricante;
 import br.com.fiap.motos.entity.Loja;
 import br.com.fiap.motos.repository.CaracteristicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class CaracteristicaService implements ServiceDTO<Caracteristica, Caracte
     }
 
     @Override
-    public Collection<Loja> findAll() {
+    public Collection<Caracteristica> findAll() {
         return repo.findAll();
     }
 

@@ -14,7 +14,7 @@ import java.util.Collection;
 public interface ServiceDTO<Entity, Request, Response> {
 
 
-    Collection<Loja> findAll();
+    Collection<Entity> findAll();
 
     public Collection<Entity> findAll(Example<Entity> example);
 

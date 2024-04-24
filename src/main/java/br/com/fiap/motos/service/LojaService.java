@@ -4,6 +4,7 @@ import br.com.fiap.motos.dto.request.LojaRequest;
 import br.com.fiap.motos.dto.request.TipoVeiculoRequest;
 import br.com.fiap.motos.dto.response.LojaResponse;
 import br.com.fiap.motos.dto.response.TipoVeiculoResponse;
+import br.com.fiap.motos.dto.response.VeiculoResponse;
 import br.com.fiap.motos.entity.Loja;
 import br.com.fiap.motos.entity.TipoVeiculo;
 import br.com.fiap.motos.entity.Veiculo;
@@ -19,7 +20,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Service
-public class LojaService implements ServiceDTO<TipoVeiculo, TipoVeiculoRequest, TipoVeiculoResponse> {
+public class LojaService implements ServiceDTO<Loja, LojaRequest, LojaResponse> {
 
     @Autowired
     private LojaRepository repo;
@@ -39,12 +40,12 @@ public class LojaService implements ServiceDTO<TipoVeiculo, TipoVeiculoRequest, 
     public LojaResponse toResponse(Loja e) {
 
 
-        var veiculos = e.getVeiculosComercializados().stream().map(veiculoService::).toList();
+        var veiculos = e.getVeiculosComercializados().stream().map(veiculoService::toResponse).toList();
 
         return LojaResponse.builder()
                 .id( e.getId() )
                 .nome( e.getNome() )
-                .veiculosComercializados( veiculos )
+                .veiculosComercializados((Set<VeiculoResponse>) veiculos)
                 .build();
     }
 

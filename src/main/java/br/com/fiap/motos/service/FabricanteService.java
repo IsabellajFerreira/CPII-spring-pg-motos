@@ -3,7 +3,6 @@ package br.com.fiap.motos.service;
 import br.com.fiap.motos.dto.request.FabricanteRequest;
 import br.com.fiap.motos.dto.response.FabricanteResponse;
 import br.com.fiap.motos.entity.Fabricante;
-import br.com.fiap.motos.entity.Loja;
 import br.com.fiap.motos.repository.FabricanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -37,7 +36,7 @@ public class FabricanteService implements ServiceDTO<Fabricante, FabricanteReque
     }
 
     @Override
-    public Collection<Loja> findAll() {
+    public Collection<Fabricante> findAll() {
         return repo.findAll();
     }
 

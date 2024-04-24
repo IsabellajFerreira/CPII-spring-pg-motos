@@ -2,7 +2,6 @@ package br.com.fiap.motos.service;
 
 import br.com.fiap.motos.dto.request.TipoVeiculoRequest;
 import br.com.fiap.motos.dto.response.TipoVeiculoResponse;
-import br.com.fiap.motos.entity.Loja;
 import br.com.fiap.motos.entity.TipoVeiculo;
 import br.com.fiap.motos.repository.TipoVeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class TipoVeiculoService implements ServiceDTO<TipoVeiculo, TipoVeiculoRe
     }
 
     @Override
-    public Collection<Loja> findAll() {
+    public Collection<TipoVeiculo> findAll() {
         return repo.findAll();
     }
 

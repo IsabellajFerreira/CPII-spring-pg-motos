@@ -5,6 +5,7 @@ import br.com.fiap.motos.entity.TipoVeiculo;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.Year;
 
@@ -14,6 +15,7 @@ public record VeiculoRequest(
         @NotNull(message = "O nome é obrigatório")
         String nome,
 
+        @DateTimeFormat(pattern = "yyyy")
         @NotNull(message = "O ano de fabricação é obrigatório")
         Year anoDeFabricacao,
 

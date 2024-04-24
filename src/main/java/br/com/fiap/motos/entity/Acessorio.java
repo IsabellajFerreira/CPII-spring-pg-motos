@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_ACESSORIO")
+@Table(name = "TB_ACESSORIO_2TDSPG")
 public class Acessorio {
 
 
@@ -22,7 +22,7 @@ public class Acessorio {
     @Column(name = "ID_ACESSORIO")
     private Long id;
 
-    @Column(name = "NOME_ACESSORIO")
+    @Column(name = "NOME_ACESSORIO", length = 30)
     private String nome;
 
     @Column(name = "PRECO_ACESSORIO")

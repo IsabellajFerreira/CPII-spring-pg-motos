@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class LojaService implements ServiceDTO<Loja, LojaRequest, LojaResponse> {
@@ -38,16 +39,20 @@ public class LojaService implements ServiceDTO<Loja, LojaRequest, LojaResponse> 
 
     @Override
     public LojaResponse toResponse(Loja e) {
-
-
-        var veiculos = e.getVeiculosComercializados().stream().map(veiculoService::toResponse).toList();
-
+        var veiculos = e.getVeiculosComercializados();
+        if (Objects.isNull(veiculos)) return LojaResponse.builder()
+                .id(e.getId())
+                .nome(e.getNome())
+                .veiculosComercializados(null)
+                .build();
+        var veiculosResponse = veiculos.stream().map(veiculoService::toResponse).collect(Collectors.toSet());
         return LojaResponse.builder()
-                .id( e.getId() )
-                .nome( e.getNome() )
-                .veiculosComercializados((Set<VeiculoResponse>) veiculos)
+                .id(e.getId())
+                .veiculosComercializados(veiculosResponse)
+                .nome(e.getNome())
                 .build();
     }
+
 
     @Override
     public Collection<Loja> findAll() {

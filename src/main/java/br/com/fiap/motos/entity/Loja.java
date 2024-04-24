@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_LOJA")
+@Table(name = "TB_LOJA_2TDSPG")
 public class Loja {
 
     @Id
@@ -28,28 +28,19 @@ public class Loja {
     @Column(name = "NOME_LOJA")
     private String nome;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-            name = "TB_LOJA_VEICULOS_COMERCIALIZADOS",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "LOJA",
-                            referencedColumnName = "ID_LOJA",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_LOJA_VEICULOS_COMERCIALIZADOS"
-                            )
+            name = "TB_LOJA_VEICULOS_2TDSPG",
+            joinColumns = @JoinColumn(name = "ID_LOJA",
+                    referencedColumnName = "ID_LOJA",
+                    foreignKey = @ForeignKey(name = "FK_LOJA_VEICULO")),
+            inverseJoinColumns = @JoinColumn(name = "ID_VEICULO",
+                    referencedColumnName = "ID_VEICULO",
+                    foreignKey = @ForeignKey(name = "FK_LOJA_VEICULO")),
+            uniqueConstraints = @UniqueConstraint(name = "UK_LOJA_VEICULO", columnNames = {"ID_VEICULO"})
                     )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "VEICULOS_COMERCIALIZADOS",
-                            referencedColumnName = "ID_VEICULOS_COMERCIALIZADOS",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_VEICULOS_COMERCIALIZADOS_LOJA"
-                            )
-                    )
-            }
-    )
+
     private Set<Veiculo> veiculosComercializados = new LinkedHashSet<>();
 
 }

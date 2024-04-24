@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 @Service
-public class AcessorioService  implements ServiceDTO<Acessorio, AcessorioRequest, AcessorioResponse>{
+public class AcessorioService implements ServiceDTO<Acessorio, AcessorioRequest, AcessorioResponse>{
 
     @Autowired
     private AcessorioRepository repo;

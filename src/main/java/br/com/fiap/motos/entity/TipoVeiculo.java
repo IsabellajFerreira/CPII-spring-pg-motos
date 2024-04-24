@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "TB_TIPO_VEICULO", uniqueConstraints = {
+@Table(name = "TB_TIPO_VEICULO_2TDSPG", uniqueConstraints = {
         @UniqueConstraint( name = "UK_TB_TIPO_VEICULO_NOME", columnNames = {"NOME_TIPO_VEICULO"})
 })
 public class TipoVeiculo {

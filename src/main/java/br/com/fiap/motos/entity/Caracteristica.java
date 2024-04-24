@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_CARACTERISTICA", uniqueConstraints = {
-        @UniqueConstraint( name = "UK_TB_CARACTERISTICA_NOME", columnNames = {"NOME_CARACTERISTICA"})
+@Table(name = "TB_CARACTERISTICA_2TDSPG", uniqueConstraints = {
+        @UniqueConstraint( name = "UK_TB_CARACTERISTICA", columnNames = {"NOME_CARACTERISTICA", "ID_VEICULO" })
 })
 public class Caracteristica {
 
@@ -24,18 +24,18 @@ public class Caracteristica {
     private Long id;
 
     //30 digitos
-    @Column(name = "NOME_CARACTERISTICA")
+    @Column(name = "NOME_CARACTERISTICA", length = 30)
     private String nome;
 
     //20 digitos
-    @Column(name = "DESCRICAO_CARACTERISTICA")
+    @Column(name = "DESCRICAO_CARACTERISTICA", length = 20)
     private String descricao;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(
-            name = "VEICULO",
+            name = "ID_VEICULO",
             referencedColumnName = "ID_VEICULO",
-            foreignKey = @ForeignKey(name = "FK_VEICULO_FABRICANTE"),
+            foreignKey = @ForeignKey(name = "FK_CARACTERISTICA_VEICULO"),
             nullable = false
     )
     private Veiculo veiculo;

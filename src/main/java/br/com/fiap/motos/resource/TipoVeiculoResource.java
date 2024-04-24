@@ -4,39 +4,73 @@ import br.com.fiap.motos.dto.request.TipoVeiculoRequest;
 import br.com.fiap.motos.dto.response.TipoVeiculoResponse;
 import br.com.fiap.motos.entity.TipoVeiculo;
 import br.com.fiap.motos.service.TipoVeiculoService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Example;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Collection;
 
-
-
 @RestController
-@RequestMapping(value = "/tipo-de-veiculo")
-public class TipoVeiculoResource {
-
+@RequestMapping(value = "/tipoveiculo")
+public class TipoVeiculoResource implements ResourceDTO<TipoVeiculo,TipoVeiculoRequest ,TipoVeiculoResponse>{
 
     @Autowired
     private TipoVeiculoService service;
 
     @GetMapping
-    public Collection<TipoVeiculoResponse> findAll() {
-        return service.findAll().stream().map(service::toResponse).toList();
+    public ResponseEntity<Collection<TipoVeiculoResponse>> findAll(
+            @RequestParam(name="nome", required = false) String nome
+    ) {
+
+        var tipoVeiculo = TipoVeiculo.builder()
+                .nome(nome)
+                .build();
+
+        ExampleMatcher matcher = ExampleMatcher.matchingAll()
+                .withIgnoreNullValues()
+                .withIgnoreCase();
+        Example<TipoVeiculo> example = Example.of( tipoVeiculo , matcher );
+
+        var encontrados = service.findAll( example );
+
+        if (encontrados.isEmpty()) return ResponseEntity.noContent().build();
+
+        var resposta = encontrados.stream()
+                .map( service::toResponse )
+                .toList();
+
+        return ResponseEntity.ok( resposta );
     }
 
-    @GetMapping(value = "/{id}")
-    public TipoVeiculoResponse findById(@PathVariable Long id) {
-        TipoVeiculo tipoVeiculo = service.findById(id);
-        return service.toResponse(tipoVeiculo);
+
+    @Override
+    @GetMapping("/{id}")
+    public ResponseEntity<TipoVeiculoResponse> findById(@PathVariable  Long id) {
+        var encontrado = service.findById( id );
+        if (encontrado == null) return ResponseEntity.notFound().build();
+        var resposta = service.toResponse( encontrado );
+        return ResponseEntity.ok( resposta );
     }
 
-    @Transactional
+    @Override
     @PostMapping
-    public TipoVeiculoResponse save(@RequestBody TipoVeiculoRequest tipoVeiculo) {
-        TipoVeiculo save = service.save(service.toEntity(tipoVeiculo));
-        return service.toResponse(save);
+    @Transactional
+    public ResponseEntity<TipoVeiculoResponse> save(@RequestBody @Valid TipoVeiculoRequest r) {
+        var entity = service.toEntity( r );
+        var saved = service.save( entity );
+        var resposta = service.toResponse( saved );
+
+        var uri = ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .path( "/{id}" )
+                .buildAndExpand( saved.getId() )
+                .toUri();
+
+        return ResponseEntity.created( uri ).body( resposta );
     }
-
-
 }

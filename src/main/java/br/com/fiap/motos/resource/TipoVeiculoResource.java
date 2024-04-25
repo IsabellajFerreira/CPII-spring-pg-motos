@@ -16,7 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(value = "/tipoveiculo")
+@RequestMapping(value = "/tipo-de-veiculo")
 public class TipoVeiculoResource implements ResourceDTO<TipoVeiculo,TipoVeiculoRequest ,TipoVeiculoResponse>{
 
     @Autowired

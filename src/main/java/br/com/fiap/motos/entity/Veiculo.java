@@ -76,7 +76,5 @@ public class Veiculo {
                     referencedColumnName = "ID_ACESSORIO",
                     foreignKey = @ForeignKey(name = "FK_ACESSORIO_VEICULO"))
     )
-
     private Set<Acessorio> acessorios = new LinkedHashSet<>();
-
 }

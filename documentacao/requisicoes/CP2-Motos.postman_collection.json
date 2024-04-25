@@ -1,0 +1,524 @@
+{
+	"info": {
+		"_postman_id": "a831afbd-64d8-4823-b802-250874aedf80",
+		"name": "CP2-Motos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34164176"
+	},
+	"item": [
+		{
+			"name": "Tipos de veiculos",
+			"item": [
+				{
+					"name": "localhost/tipo-de-veiculo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Passeio\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/tipo-de-veiculo",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tipo-de-veiculo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/tipo-de-veiculo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/tipo-de-veiculo?nome=Passeio",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tipo-de-veiculo"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Passeio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/tipo-de-veiculo/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/tipo-de-veiculo/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tipo-de-veiculo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fabricantes",
+			"item": [
+				{
+					"name": "localhost/fabricantes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Departamento de carros\",\r\n    \"nomeFantasia\": \"Fiat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/fabricantes",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"fabricantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/fabricantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/fabricantes?nome=Departamento de carros&nomeFantasia=Fiat",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"fabricantes"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Departamento de carros"
+								},
+								{
+									"key": "nomeFantasia",
+									"value": "Fiat"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/fabricantes/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/fabricantes/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"fabricantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Acessorio",
+			"item": [
+				{
+					"name": "localhost/acessorio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Espelho\",\r\n    \"preco\": 200\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/acessorio",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"acessorio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/acessorio?nome&preco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/acessorio?nome=Espelho&preco=200",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"acessorio"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Espelho"
+								},
+								{
+									"key": "preco",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/acessorio/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/acessorio/2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"acessorio",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Veiculos",
+			"item": [
+				{
+					"name": "localhost/veiculos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"preco\": 350,\r\n    \"modelo\": \"Lancer EVO 2015\",\r\n    \"anoDeFabricacao\" : \"2015\",\r\n    \"nome\" : \"Lancer\",\r\n    \"tipo\" :{\"id\": 1},\r\n    \"fabricante\" :{\"id\": 1},\r\n    \"cor\" : \"preto\",\r\n    \"palavraDeEfeito\" : \"Sucesso\",\r\n    \"cilindradas\" : 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/veiculos",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/veiculos/{id}/acessorios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Adesivo\",\r\n    \"preco\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/veiculos/1/acessorios",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"veiculos",
+								"1",
+								"acessorios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/veiculos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/veiculos?preco=350&modelo=LancerEVO2015&anoDeFabricacao=2015&nome=Lancer&tipo.id=1&fabricante.id=1&cor=Preto&cilindradas=200",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"veiculos"
+							],
+							"query": [
+								{
+									"key": "preco",
+									"value": "350"
+								},
+								{
+									"key": "modelo",
+									"value": "LancerEVO2015"
+								},
+								{
+									"key": "anoDeFabricacao",
+									"value": "2015"
+								},
+								{
+									"key": "nome",
+									"value": "Lancer"
+								},
+								{
+									"key": "tipo.id",
+									"value": "1"
+								},
+								{
+									"key": "fabricante.id",
+									"value": "1"
+								},
+								{
+									"key": "cor",
+									"value": "Preto"
+								},
+								{
+									"key": "cilindradas",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/veiculos/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/veiculos/4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/veiculos/{id}/acessorios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/veiculos/1/acessorios",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"veiculos",
+								"1",
+								"acessorios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loja",
+			"item": [
+				{
+					"name": "localhost/loja",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mobi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/loja",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"loja"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/loja/{id}/veiculos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"preco\": 350,\r\n    \"modelo\": \"Lancer EVO 2015\",\r\n    \"anoDeFabricacao\" : \"2015\",\r\n    \"nome\" : \"Lancer\",\r\n    \"tipo\" :{\"id\": 1},\r\n    \"fabricante\" :{\"id\": 1},\r\n    \"cor\" : \"preto\",\r\n    \"palavraDeEfeito\" : \"Sucesso\",\r\n    \"cilindradas\" : 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/loja/1/veiculos",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"loja",
+								"1",
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/loja",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/loja?nome=Mobi",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"loja"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Mobi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/loja/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/loja/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"loja",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/loja/{id}/veiculos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/loja/1/veiculos",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"loja",
+								"1",
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
